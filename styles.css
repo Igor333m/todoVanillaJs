@@ -52,6 +52,12 @@ ul {
   margin: 10px;
 }
 
+li button {
+  float: right;
+  vertical-align: middle;
+  margin-top: 5px;
+}
+
 .todo-checkbox {
   margin: 10px;
 }

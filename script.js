@@ -78,6 +78,8 @@ function todoObject (todo) {
       label = document.createElement('label'),
       cancelButton = document.createElement('button')
 
+  li.setAttribute('class', classNames.TODO_ITEM)
+
   input.setAttribute('type', 'checkbox')
   input.setAttribute('class', classNames.TODO_CHECKBOX)
   input.setAttribute('name', 'todo')
