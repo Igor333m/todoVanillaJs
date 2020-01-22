@@ -9,9 +9,12 @@ const list = document.getElementById('todo-list')
 const itemCountSpan = document.getElementById('item-count')
 const uncheckedCountSpan = document.getElementById('unchecked-count')
 
+// Array of all <li>
 let allTodos = []
 
-
+/**
+ *  Keep item count in sync
+ */
 const itemCount = {
   itemCount: 0,
   addCount: function () {
@@ -25,6 +28,9 @@ const itemCount = {
   }
 }
 
+/**
+ *  Keep check count in sync
+ */
 const checkCount = {
   totalUncheckedCount: 0,
   addCount: function () {
@@ -39,6 +45,9 @@ const checkCount = {
   }
 }
 
+/**
+ *  Create new todo item
+ */
 function newTodo () {
   const newTodo = prompt('New Todo!')
   
@@ -53,6 +62,9 @@ function newTodo () {
   
 }
 
+/**
+ *  Controls the checkbox counter 
+ */
 function checkedFunc (e) {
   if(e.target.checked) {
     checkCount.removeCount()
@@ -63,20 +75,30 @@ function checkedFunc (e) {
   }
 }
 
-function deleteTodo (e, tt) {
+/**
+ * Delete li and li in the array
+ * @param e - Mouse Event
+ * @param clickedLi - clicked li
+ */
+function deleteTodo (e, clickedLi) {
   allTodos.forEach( (item, index) => {
-    if (item === tt) {
+    if (item === clickedLi) {
       allTodos.splice(index, 1);
     }
   })
-  tt.remove()
+  clickedLi.remove()
 }
 
+/**
+ *  Creates new li element
+ *  @param todo - Todo text from prompt
+ */
 function todoObject (todo) {
   let li = document.createElement('li'),
       input = document.createElement('input'),
       label = document.createElement('label'),
       cancelButton = document.createElement('button')
+
 
   li.setAttribute('class', classNames.TODO_ITEM)
 
@@ -98,7 +120,9 @@ function todoObject (todo) {
   return li
 }
 
-
+/**
+ *  Renders all items
+ */
 function render () {
   allTodos.map( item => {
     list.appendChild(item)
